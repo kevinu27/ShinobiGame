@@ -20,6 +20,7 @@ const game = {
         LEFT_MOVE: 'A',//A
     },
     oneTime: true,
+    oneTime2: true,
 
     // elementros creados
     shinobi: undefined,
@@ -41,7 +42,7 @@ const game = {
         this.setDimensions()
         this.setEventListeners()
         this.start()
-        this.initMusic()
+        //  this.initMusic()
         this.finalbossMoment()
     },
 
@@ -111,7 +112,7 @@ const game = {
             this.background.backgroundPosX < -7000 ? this.youWin() : null
             this.background.backgroundPosX < -3000 && this.oneTime === true ? (this.stopMusic(), this.finalBoss(), this.oneTime = false) : null
             console.log(this.oneTime)
-
+            this.shinobi.shinobiPos.x > 550 && this.oneTime2 === true ? (this.oneTime2 = false, this.initMusic(), console.log("entro en la condicion")) : null
             this.shinobi.grav()
             this.shinobi.jumping()
             this.allCollision()
@@ -152,7 +153,7 @@ const game = {
         this.background = new Background(this.ctx, 8000, this.canvasSize.h, 'background.png')
         this.createPlatform()
         this.createEnemy()
-        this.shinobi = new Shinobi(this.ctx, 200, 200, 600, this.canvasSize.h - 300, this.canvasSize, 'shinobi.png')
+        this.shinobi = new Shinobi(this.ctx, 200, 200, 500, this.canvasSize.h - 300, this.canvasSize, 'shinobi.png')
     },
     // ---------------------------------------------------------------------------------------------
     attackShuriken() {
@@ -169,9 +170,9 @@ const game = {
         const enemy7 = new Enemy(this.ctx, 3400, this.canvasSize.h - 200, this.canvasSize, 2000, 200, 200, this.shinobi, 'enemy2.png')
         const enemy8 = new Enemy(this.ctx, 3900, this.canvasSize.h - 200, this.canvasSize, 2000, 200, 200, this.shinobi, 'enemy2.png')
         const enemy9 = new Enemy(this.ctx, 4500, this.canvasSize.h - 200, this.canvasSize, 2000, 200, 200, this.shinobi, 'enemy2.png')
-        const enemyG = new Enemy(this.ctx, 6000, this.canvasSize.h - 500, this.canvasSize, 2000, 500, 500, this.shinobi, "enemyGerman.png")
-        const enemyT = new Enemy(this.ctx, 5500, this.canvasSize.h - 500, this.canvasSize, 2000, 500, 500, this.shinobi, "enemyTeo.png")
-        const enemyP = new Enemy(this.ctx, 5000, this.canvasSize.h - 500, this.canvasSize, 2000, 500, 500, this.shinobi, "enemyPaula.png")
+        const enemyG = new Enemy(this.ctx, 6000, this.canvasSize.h - 500, this.canvasSize, 2000, 500, 500, this.shinobi, "enemygerman.png")
+        const enemyT = new Enemy(this.ctx, 5500, this.canvasSize.h - 500, this.canvasSize, 2000, 500, 500, this.shinobi, "enemyteo.png")
+        const enemyP = new Enemy(this.ctx, 5000, this.canvasSize.h - 500, this.canvasSize, 2000, 500, 500, this.shinobi, "enemypaula.png")
         const enemyPopino = new Enemy(this.ctx, 6300, this.canvasSize.h - 300, this.canvasSize, 2000, 350, 350, this.shinobi, "popino1.png")
 
 
